@@ -7,7 +7,7 @@ import {
   Cpu, 
   Factory,
   ShieldCheck,
-  Sparkles 
+  Circle, Triangle, Square 
 } from 'lucide-react';
 
 import { HeroSection } from '../HeroSection';
@@ -34,12 +34,16 @@ const TextMarquee = () => {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-800 to-transparent" />
       <div className="flex w-max animate-scroll-marquee whitespace-nowrap items-center">
-        {[...words, ...words, ...words].map((word, i) => (
-          <div key={i} className="flex items-center gap-8 mx-8">
-            <span className="text-3xl sm:text-5xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-600 to-slate-800 uppercase tracking-widest">{word}</span>
-            <Sparkles className="w-8 h-8 text-cyan-900/50" />
-          </div>
-        ))}
+        {[...words, ...words, ...words].map((word, i) => {
+          const icons = [Circle, Triangle, Square];
+          const Icon = icons[i % icons.length];
+          return (
+            <div key={i} className="flex items-center gap-[6px] mx-8">
+              <span className="text-4xl sm:text-6xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-700 uppercase tracking-widest">{word}</span>
+              <Icon className="w-8 h-8 text-cyan-800/50 ml-4" />
+            </div>
+          );
+        })}
       </div>
     </div>
   )
@@ -72,7 +76,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
     <>
       {/* 1. Cinematic Intro Sequence */}
       <AnimatePresence>
-        {!introFinished && <TransitionTextSequence />}
+        {!introFinished && <TransitionTextSequence onComplete={() => {}} />}
       </AnimatePresence>
 
       <div className={`relative min-h-screen bg-[#020617] text-slate-300 transition-opacity duration-1000 overflow-hidden ${introFinished ? 'opacity-100' : 'opacity-0'}`}>

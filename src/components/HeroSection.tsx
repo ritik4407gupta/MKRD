@@ -80,7 +80,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
               PRECISION ENGINEERING & DIGITAL SYSTEMS
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.05] drop-shadow-lg">
-              WHERE PHYSICAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-sm">PRECISION</span> MEETS DIGITAL ARCHITECTURE.
+              WHERE PHYSICAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-sm">PRECISION</span> MEETS DIGITAL ARCHITECTURE
             </h1>
           </motion.div>
 
@@ -91,7 +91,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-base sm:text-lg text-slate-200 max-w-2xl leading-relaxed font-medium drop-shadow-md"
           >
-            MKRD Engineers delivers end-to-end industrial execution: from sub-micron 
+            MKRD Engineers deliver end-to-end industrial execution: from sub-micron 
             <strong className="text-white font-bold"> Plastic Injection Mould & Die Tooling</strong> and 
             <strong className="text-white font-bold"> Advanced 3D Additive Fabrication</strong>, to 
             <strong className="text-white font-bold"> Enterprise Software</strong> and 
