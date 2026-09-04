@@ -125,46 +125,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
           transition={{ duration: 0.7, delay: 0.2 }}
           className="lg:col-span-5 relative"
         >
-          <div className="relative rounded-[2rem] overflow-hidden border border-slate-700/80 bg-slate-900/40 backdrop-blur-xl shadow-2xl group">
+          <div className="relative rounded-[2rem] overflow-hidden group [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)]">
             {/* Cinematic Hero Image Frame */}
-            <div className="relative h-[340px] sm:h-[420px] overflow-hidden">
+            <div className="relative h-[400px] sm:h-[500px] overflow-hidden">
               <img
                 src={heroImg}
                 alt="MKRD Precision Robotic Engineering"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 filter brightness-90 opacity-90 group-hover:opacity-100"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 filter brightness-75 opacity-90 group-hover:opacity-100 group-hover:brightness-90"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent z-10" />
 
               {/* Live Status HUD Badge */}
-              <div className="absolute top-4 right-4 bg-blue-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-blue-800/80 text-[11px] font-mono text-cyan-300 flex items-center gap-1.5 shadow-xl z-20">
+              <div className="absolute top-1/4 right-1/4 bg-blue-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-blue-800/80 text-[11px] font-mono text-cyan-300 flex items-center gap-1.5 shadow-xl z-20">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
                 <span className="font-bold tracking-wider">FACILITY LIVE</span>
               </div>
-
-              {/* Corner Engineering Crosshairs */}
-              <div className="absolute top-4 left-4 text-slate-400 font-mono text-[10px] bg-slate-950/80 px-2 py-0.5 rounded border border-slate-800 backdrop-blur-sm z-20">+ 28.3619N</div>
-              <div className="absolute bottom-6 right-4 text-cyan-400 font-mono text-[10px] bg-blue-950/80 px-2 py-0.5 rounded border border-blue-900/50 backdrop-blur-sm z-20 font-bold tracking-widest">GD&T VERIFIED</div>
-            </div>
-
-            {/* Bottom Card Strip */}
-            <div className="p-5 bg-slate-900/80 border-t border-slate-700/50 flex items-center justify-between relative z-20">
-              <div>
-                <div className="font-bold text-xs text-white uppercase tracking-wider">MKRD IMT MANESAR HUB</div>
-                <div className="text-[11px] text-slate-400 font-mono mt-0.5">Full-Spectrum Hardware & Digital Plant</div>
-              </div>
-              <a
-                href="#services"
-                className="p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-cyan-400 hover:bg-cyan-600 hover:border-cyan-500 hover:text-white transition-colors shadow-md"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </a>
             </div>
           </div>
-          
-          {/* Decorative Corner Accents */}
-          <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-cyan-500/50 rounded-tr-xl pointer-events-none" />
-          <div className="absolute -bottom-2 -left-2 w-8 h-8 border-b-2 border-l-2 border-cyan-500/50 rounded-bl-xl pointer-events-none" />
         </motion.div>
       </div>
 

@@ -191,3 +191,12 @@
   scrollbar-width: none;
 }
 
+
+@keyframes scroll-marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-marquee {
+  animation: scroll-marquee 40s linear infinite;
+}
