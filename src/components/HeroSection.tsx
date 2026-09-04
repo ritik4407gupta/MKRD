@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Compass, Cpu, Layers } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data/mkrdData';
@@ -9,21 +9,42 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Normalize mouse coordinates from -1 to 1 for subtle parallax
+      const x = (e.clientX / window.innerWidth) * 2 - 1;
+      const y = (e.clientY / window.innerHeight) * 2 - 1;
+      setMousePosition({ x, y });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
     <section id="home" className="relative min-h-[92vh] pt-28 pb-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-between overflow-hidden bg-transparent">
       
-      {/* Full Background Machine Image blending into the bottom */}
-      <div className="absolute inset-0 z-0 [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)] opacity-30">
+      {/* Full Background Machine Image blending into the bottom - WITH PARALLAX */}
+      <motion.div 
+        className="absolute inset-[-5%] z-0 [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)] opacity-70"
+        animate={{
+          x: mousePosition.x * -30, // Opposite movement to mouse
+          y: mousePosition.y * -30,
+        }}
+        transition={{ type: "spring", stiffness: 50, damping: 30 }}
+      >
         <img
           src={heroImg}
           alt="MKRD Precision Robotic Engineering"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover filter contrast-125 saturate-110"
           referrerPolicy="no-referrer"
         />
-        {/* Additional gradient overlays for deep cinematic feel */}
-        <div className="absolute inset-0 bg-[#020617]/40 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/50 to-transparent" />
-      </div>
+        {/* Adjusted overlays for higher intensity (less dark overlay) */}
+        <div className="absolute inset-0 bg-[#020617]/10 mix-blend-multiply pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/20 to-transparent pointer-events-none" />
+      </motion.div>
 
       {/* Background Blueprint Gradients & Grid (Layered over the image) */}
       <div className="absolute inset-0 bg-grid-tech opacity-20 pointer-events-none z-0" />
@@ -55,10 +76,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
             transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-2"
           >
-            <div className="text-xs font-mono font-bold text-cyan-500 uppercase tracking-widest">
+            <div className="text-xs font-mono font-bold text-cyan-500 uppercase tracking-widest drop-shadow-md">
               PRECISION ENGINEERING & DIGITAL SYSTEMS
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.05]">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.05] drop-shadow-lg">
               WHERE PHYSICAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-sm">PRECISION</span> MEETS DIGITAL ARCHITECTURE.
             </h1>
           </motion.div>
@@ -68,7 +89,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed font-medium"
+            className="text-base sm:text-lg text-slate-200 max-w-2xl leading-relaxed font-medium drop-shadow-md"
           >
             MKRD Engineers delivers end-to-end industrial execution: from sub-micron 
             <strong className="text-white font-bold"> Plastic Injection Mould & Die Tooling</strong> and 
@@ -113,7 +134,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
           <div className="p-8 rounded-[2rem] bg-slate-900/50 backdrop-blur-xl border border-slate-700/60 shadow-[0_0_50px_rgba(8,145,178,0.1)] relative overflow-hidden group">
             
             {/* Animated Scanning Line Background */}
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent w-full h-1/2 animate-pulse" style={{ animationDuration: '3s' }} />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent w-full h-1/2 animate-pulse" style={{ animationDuration: '3s' }} />
 
             <div className="relative z-10 space-y-6">
               <div className="flex items-center justify-between border-b border-slate-700/50 pb-4">
