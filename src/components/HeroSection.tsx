@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Cpu, Compass, ChevronRight } from 'lucide-react';
-import heroImg from '../assets/images/hero_robotic_precision_1787995484245.jpg';
+import { Sparkles, ArrowRight, Play, Compass, Shield, Cpu, ChevronRight } from 'lucide-react';
 import { COMPANY_DETAILS } from '../data/mkrdData';
+import heroImg from '../assets/images/hero_robotic_precision_1787995484245.jpg';
 
 interface HeroSectionProps {
   onOpenQuoteModal: () => void;
@@ -10,13 +10,14 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) => {
   return (
-    <section id="home" className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
-      
-      {/* Background Cinematic Glows specific to Hero */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-900/20 blur-[150px] rounded-full pointer-events-none" />
+    <section id="home" className="relative min-h-[92vh] pt-28 pb-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-between overflow-hidden bg-transparent">
+      {/* Background Blueprint Gradients & Grid */}
+      <div className="absolute inset-0 bg-grid-tech opacity-20 pointer-events-none" />
+      <div className="absolute top-1/4 -left-40 w-96 h-96 bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 -right-40 w-96 h-96 bg-blue-900/20 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-        
+      {/* Main Hero Container */}
+      <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center my-auto">
         {/* Left Column: Typographic & Editorial Messaging */}
         <div className="lg:col-span-7 space-y-7">
           {/* Metadata Marker */}
@@ -42,8 +43,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
             <div className="text-xs font-mono font-bold text-cyan-500 uppercase tracking-widest">
               PRECISION ENGINEERING & DIGITAL SYSTEMS
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-black text-white tracking-tight leading-[1.08]">
-              WHERE PHYSICAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">PRECISION</span> MEETS DIGITAL ARCHITECTURE.
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight leading-[1.08]">
+              WHERE PHYSICAL <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">PRECISION</span> MEETS DIGITAL ARCHITECTURE.
             </h1>
           </motion.div>
 
@@ -72,7 +73,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
             <button
               id="hero-btn-quote"
               onClick={onOpenQuoteModal}
-              className="px-6 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm flex items-center gap-2 transition-all shadow-lg shadow-blue-900/50 hover:shadow-cyan-900/50 active:scale-98 border border-blue-500/50"
+              className="px-6 py-3.5 rounded-full bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm flex items-center gap-2 transition-all shadow-lg shadow-cyan-900/50 hover:shadow-cyan-500/40 active:scale-98 border border-cyan-500/50"
             >
               <span>Get Engineering Quote</span>
               <ArrowRight className="w-4 h-4" />
@@ -80,10 +81,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
 
             <a
               href="#interactive-3d-lab"
-              className="px-5 py-3.5 rounded-full bg-slate-900/60 hover:bg-slate-800 backdrop-blur-md border border-slate-700 hover:border-blue-500/50 text-white font-semibold text-sm flex items-center gap-2 transition-all shadow-md"
+              className="px-5 py-3.5 rounded-full bg-slate-900/60 hover:bg-slate-800 backdrop-blur-md border border-slate-700 hover:border-cyan-500/50 text-white font-semibold text-sm flex items-center gap-2 transition-all shadow-md"
             >
               <Cpu className="w-4 h-4 text-cyan-400" />
               <span>Launch 3D Lab</span>
+            </a>
+
+            <a
+              href="#virtual-tour-section"
+              className="px-5 py-3.5 rounded-full bg-slate-900/60 hover:bg-slate-800 backdrop-blur-md border border-slate-700 hover:border-cyan-500/50 text-white font-semibold text-sm flex items-center gap-2 transition-all shadow-md"
+            >
+              <Compass className="w-4 h-4 text-cyan-400" />
+              <span>360° Virtual Tour</span>
             </a>
           </motion.div>
 
@@ -92,19 +101,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/80 max-w-lg"
+            className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800 max-w-lg"
           >
             <div>
               <div className="text-2xl font-bold font-display text-cyan-400">±0.005 mm</div>
-              <div className="text-xs text-slate-500 font-mono font-medium uppercase">Machining Tolerance</div>
+              <div className="text-xs text-slate-500 font-mono font-medium">Machining Tolerance</div>
             </div>
             <div>
               <div className="text-2xl font-bold font-display text-white">&lt; 24h</div>
-              <div className="text-xs text-slate-500 font-mono font-medium uppercase">3D Print Turnaround</div>
+              <div className="text-xs text-slate-500 font-mono font-medium">3D Print Turnaround</div>
             </div>
             <div>
               <div className="text-2xl font-bold font-display text-emerald-400">ISO 9001</div>
-              <div className="text-xs text-slate-500 font-mono font-medium uppercase">Quality Certified</div>
+              <div className="text-xs text-slate-500 font-mono font-medium">Quality Certified</div>
             </div>
           </motion.div>
         </div>
@@ -128,7 +137,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10" />
 
               {/* Live Status HUD Badge */}
-              <div className="absolute top-4 right-4 bg-blue-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-blue-800/80 text-[10px] font-mono text-cyan-300 flex items-center gap-1.5 shadow-xl z-20">
+              <div className="absolute top-4 right-4 bg-blue-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-blue-800/80 text-[11px] font-mono text-cyan-300 flex items-center gap-1.5 shadow-xl z-20">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
                 <span className="font-bold tracking-wider">FACILITY LIVE</span>
               </div>
@@ -146,7 +155,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
               </div>
               <a
                 href="#services"
-                className="p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-cyan-400 hover:bg-blue-600 hover:border-blue-500 hover:text-white transition-colors shadow-md"
+                className="p-2.5 rounded-xl bg-slate-800 border border-slate-700 text-cyan-400 hover:bg-cyan-600 hover:border-cyan-500 hover:text-white transition-colors shadow-md"
               >
                 <ChevronRight className="w-4 h-4" />
               </a>
@@ -160,11 +169,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenQuoteModal }) =>
       </div>
 
       {/* Bottom Editorial Scroll Cue */}
-      <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row items-center justify-between pt-8 mt-12 border-t border-slate-800/80 text-[10px] font-mono text-slate-500 relative z-10 gap-4">
-        <div className="tracking-widest">REG. ADDRESS: <span className="text-slate-400">{COMPANY_DETAILS.address}</span></div>
-        <div className="flex items-center gap-3">
-          <span className="tracking-widest uppercase">SCROLL TO EXPLORE CINEMATIC SYSTEMS</span>
-          <span className="animate-bounce text-cyan-400 font-bold text-sm">↓</span>
+      <div className="max-w-7xl mx-auto w-full flex items-center justify-between pt-6 border-t border-slate-800 text-xs font-mono text-slate-500">
+        <div>REG. ADDRESS: <span className="text-slate-400">{COMPANY_DETAILS.address}</span></div>
+        <div className="flex items-center gap-2">
+          <span className="uppercase tracking-widest">SCROLL TO EXPLORE CINEMATIC SYSTEMS</span>
+          <span className="animate-bounce text-cyan-400 font-bold">↓</span>
         </div>
       </div>
     </section>
